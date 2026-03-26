@@ -278,7 +278,7 @@ function Hero() {
     }}>
       <div className="container-uc" style={{ position: "relative" }}>
         <h1 className="font-anton" style={{
-          fontSize: "clamp(122px, 19vw, 204px)",
+          fontSize: "clamp(66px, 10vw, 110px)",
           lineHeight: 0.88,
           letterSpacing: "-0.01em",
           textTransform: "uppercase",
