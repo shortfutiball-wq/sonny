@@ -3,6 +3,8 @@
 import PhoneLattic from "./components/PhoneLattic";
 import Portfolio from "./components/Portfolio";
 import Testimonials from "./components/Testimonials";
+import NavLattic from "./components/NavLattic";
+import CtaFooter from "./components/CtaFooter";
 
 /* ─── SVG COMPONENTS ─────────────────────────────────────────── */
 
@@ -845,11 +847,12 @@ function About() {
 export default function Home() {
   return (
     <main>
-      <Navbar />
+      <NavLattic />
       <Hero />
       <ServicesSection />
       <Portfolio />
       <Testimonials />
+      <CtaFooter />
     </main>
   );
 }
