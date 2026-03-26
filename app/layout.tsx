@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Inter } from "next/font/google";
+import { Anton, Inter, DM_Sans } from "next/font/google";
 import "./globals.css";
 
 const anton = Anton({
@@ -13,16 +13,22 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const dmSans = DM_Sans({
+  variable: "--font-dm",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+});
+
 export const metadata: Metadata = {
   title: "UGLYCASH",
-  description: "More opportunity for our Generation.",
+  description: "Agence experte en référencement Google.",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${anton.variable} ${inter.variable}`}>
+    <html lang="fr" className={`${anton.variable} ${inter.variable} ${dmSans.variable}`}>
       <body>{children}</body>
     </html>
   );
