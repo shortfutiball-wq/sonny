@@ -37,7 +37,7 @@ const CSS = `
   line-height: 1.6;
 }
 .form-bento {
-  background: rgba(255,255,255,.88);
+  background: rgba(255,255,255,.97);
   border-radius: 20px;
   padding: 28px 28px 24px;
   text-align: left;
