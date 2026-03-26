@@ -1,6 +1,8 @@
 "use client";
 
 import PhoneLattic from "./components/PhoneLattic";
+import Portfolio from "./components/Portfolio";
+import Testimonials from "./components/Testimonials";
 
 /* ─── SVG COMPONENTS ─────────────────────────────────────────── */
 
@@ -527,6 +529,7 @@ function ServicesSection() {
   );
 }
 
+/* ─── UNUSED BELOW — kept for SVG helpers used elsewhere ─────── */
 /* ─── WHAT UGLYCASH ENABLES ──────────────────────────────────── */
 
 function BankListCard() {
@@ -845,12 +848,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ServicesSection />
-      <WhatEnables />
-      <RegulatoryClarity1 />
-      <RegulatoryClarity2 />
-      <FromTheField />
-      <DiscoverMore />
-      <About />
+      <Portfolio />
+      <Testimonials />
     </main>
   );
 }
