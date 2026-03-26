@@ -22,14 +22,12 @@ const CSS = `
   padding: 10px 10px 10px 28px;
   width: 100%;
   max-width: 580px;
-  transition: background .25s ease, backdrop-filter .25s ease, border-color .25s ease;
-  border: 1px solid transparent;
+  transition: background .25s ease, backdrop-filter .25s ease;
 }
 .navbar.scrolled {
   background: rgba(255,255,255,.72);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-color: rgba(0,0,0,.08);
 }
 .nav-logo {
   font-family: var(--font-anton), Anton, Impact, sans-serif;

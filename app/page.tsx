@@ -322,14 +322,28 @@ function ServicesSection() {
 
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "48px" }}>
+          <div style={{
+            display: "inline-block",
+            fontFamily: "var(--font-dm),'DM Sans',sans-serif",
+            fontSize: "11px",
+            fontWeight: 700,
+            letterSpacing: ".14em",
+            textTransform: "uppercase",
+            color: "#777",
+            border: "1px solid rgba(0,0,0,.15)",
+            padding: "4px 14px",
+            borderRadius: "999px",
+            marginBottom: "20px",
+          }}>Expertise</div>
           <h2 className="font-anton" style={{
             fontSize: "clamp(48px, 7vw, 88px)",
             lineHeight: 0.9,
             letterSpacing: "-0.01em",
             textTransform: "uppercase",
             color: "#0A0A0A",
+            display: "block",
           }}>
-            TOUT CE DONT<br />VOUS AVEZ BESOIN
+            TOUT CE DONT<br />VOUS AVEZ BESOIN.
           </h2>
         </div>
 
@@ -381,14 +395,14 @@ function ServicesSection() {
           {/* C2 — Référencement Google — 5 cols */}
           <div className="svc-card" style={{
             gridColumn: "span 5",
-            background: "#F0EFEB",
+            background: "#DFF0E4",
             color: "#0A0A0A",
             minHeight: "240px",
             border: "1px solid rgba(0,0,0,.07)",
             animationDelay: ".10s",
           }}>
             <span className="svc-card-num">02</span>
-            <span className="svc-card-tag" style={{ background: "#0A0A0A", color: "#fff" }}>SEO</span>
+            <span className="svc-card-tag" style={{ background: "#1A5C3A", color: "#fff" }}>SEO</span>
             <div className="svc-card-title">Référencement<br/>Google</div>
             <p className="svc-card-body" style={{ color: "rgba(0,0,0,.5)" }}>
               Apparaître en tête des résultats locaux. Plus de visibilité, plus de clients qui vous trouvent eux-mêmes.
@@ -397,12 +411,12 @@ function ServicesSection() {
               {[1,2,3,4,5].map((i) => (
                 <div key={i} style={{
                   width: "18px", height: "18px",
-                  background: "#0A0A0A",
+                  background: "#1A5C3A",
                   clipPath: "polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)",
                 }}/>
               ))}
             </div>
-            <span className="svc-bg-text" style={{ color: "rgba(0,0,0,.05)", right: "-10px", bottom: "-18px" }}>SEO</span>
+            <span className="svc-bg-text" style={{ color: "rgba(26,92,58,.07)", right: "-10px", bottom: "-18px" }}>SEO</span>
           </div>
 
           {/* C3 — Carte fidélité — 4 cols */}
@@ -434,14 +448,14 @@ function ServicesSection() {
           {/* C4 — Avis Google — 4 cols */}
           <div className="svc-card" style={{
             gridColumn: "span 4",
-            background: "#E8E6E0",
+            background: "#F5E5D0",
             color: "#0A0A0A",
             border: "1px solid rgba(0,0,0,.07)",
             minHeight: "210px",
             animationDelay: ".20s",
           }}>
             <span className="svc-card-num">04</span>
-            <span className="svc-card-tag" style={{ background: "#0A0A0A", color: "#fff" }}>Réputation</span>
+            <span className="svc-card-tag" style={{ background: "#8A4010", color: "#fff" }}>Réputation</span>
             <div className="svc-card-title">Avis Google<br/>certifiés</div>
             <p className="svc-card-body" style={{ color: "#777" }}>
               Collectez de vrais avis 5 étoiles automatiquement. Votre réputation en pilote automatique.
@@ -459,7 +473,7 @@ function ServicesSection() {
           {/* C5 — Menuboard & flyers — 4 cols */}
           <div className="svc-card" style={{
             gridColumn: "span 4",
-            background: "#2A2A2A",
+            background: "#1C2E40",
             color: "white",
             minHeight: "210px",
             animationDelay: ".25s",
@@ -487,7 +501,7 @@ function ServicesSection() {
           {/* C6 — Automatisation — 12 cols */}
           <div className="svc-card svc-c6" style={{
             gridColumn: "span 12",
-            background: "#F5F4F0",
+            background: "#E5EDF8",
             color: "#0A0A0A",
             border: "1px solid rgba(0,0,0,.07)",
             padding: "28px 36px",
