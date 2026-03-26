@@ -284,7 +284,7 @@ function Hero() {
           textTransform: "uppercase",
           color: "var(--text-primary)",
         }}>
-          PLUS DE CLIENTS
+          PLUS DE CLIENTS,
           <br />
           TOUT SIMPLEMENT
         </h1>

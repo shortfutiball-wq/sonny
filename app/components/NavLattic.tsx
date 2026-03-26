@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 const CSS = `
 .nav-wrap {
   position: fixed;
@@ -15,13 +17,19 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(232,230,226,.96);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: transparent;
   border-radius: 14px;
   padding: 10px 10px 10px 28px;
   width: 100%;
   max-width: 580px;
+  transition: background .25s ease, backdrop-filter .25s ease, border-color .25s ease;
+  border: 1px solid transparent;
+}
+.navbar.scrolled {
+  background: rgba(255,255,255,.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: rgba(0,0,0,.08);
 }
 .nav-logo {
   font-family: var(--font-anton), Anton, Impact, sans-serif;
@@ -53,6 +61,14 @@ const CSS = `
 `;
 
 export default function NavLattic() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -61,7 +77,7 @@ export default function NavLattic() {
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <div className="nav-wrap">
-        <nav className="navbar">
+        <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
           <a className="nav-logo" href="#">Lattic</a>
           <button className="nav-cta" onClick={scrollToContact}>
             Démarrer

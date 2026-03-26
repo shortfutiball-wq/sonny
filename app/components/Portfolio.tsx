@@ -194,7 +194,7 @@ export default function Portfolio() {
         <div className="portfolio-header">
           <div className="p-eyebrow">Projets</div>
           <h2>Nos réalisations.</h2>
-          <p>Focus sur nos collaborations marquantes.</p>
+          <p>Focus sur nos +90 collaborations marquantes.</p>
         </div>
 
         <div className="scroll-track-wrap">
