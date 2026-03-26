@@ -27,9 +27,7 @@ const CSS = `
   border-radius: 46px;
   box-shadow:
     inset 0 0 0 1.5px #3A3A3C,
-    inset 0 0 0 10px #0A0A0A,
-    0 32px 80px rgba(0,0,0,.72),
-    0 0 0 1px rgba(255,255,255,.045);
+    inset 0 0 0 10px #0A0A0A;
   animation: phoneIn .7s cubic-bezier(.22,1,.36,1) both;
 }
 @keyframes phoneIn {
@@ -71,22 +69,6 @@ const CSS = `
   z-index: 10;
   overflow: hidden;
 }
-
-/* ── PALLETTE ── */
-.uc-pallette {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-}
-.uc-pallette-dot {
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 1.5px solid rgba(255,255,255,.22);
-  transition: transform .18s;
-}
-.uc-pallette-dot:hover { transform: scale(1.38); }
 
 /* ── LATTIC SCREEN ── */
 .lattic-screen {
@@ -540,23 +522,6 @@ export default function PhoneLattic() {
           </div>
         </div>
 
-        {/* Color palette */}
-        <div className="uc-pallette">
-          {GRADIENTS.map((g, i) => (
-            <div
-              key={i}
-              className="uc-pallette-dot"
-              style={{ background: g }}
-              onClick={() => setGradient(g)}
-            />
-          ))}
-          <div
-            className="uc-pallette-dot"
-            style={{ background: "conic-gradient(red,orange,yellow,green,blue,violet,red)" }}
-            onClick={randomGradient}
-            title="Aléatoire"
-          />
-        </div>
       </div>
     </>
   );

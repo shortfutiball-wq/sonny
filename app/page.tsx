@@ -278,7 +278,7 @@ function Hero() {
     }}>
       <div className="container-uc" style={{ position: "relative" }}>
         <h1 className="font-anton" style={{
-          fontSize: "clamp(72px, 11vw, 120px)",
+          fontSize: "clamp(122px, 19vw, 204px)",
           lineHeight: 0.88,
           letterSpacing: "-0.01em",
           textTransform: "uppercase",
@@ -289,17 +289,18 @@ function Hero() {
           TOUT SIMPLEMENT
         </h1>
 
+        <div style={{ marginTop: "32px" }}>
+          <PhoneLattic />
+        </div>
+
         <p style={{
           fontFamily: "var(--font-inter), Inter, sans-serif",
           fontSize: "14px",
           color: "var(--text-muted)",
-          marginTop: "32px",
-          marginBottom: "40px",
+          marginTop: "24px",
         }}>
           Agence experte en référencement Google.
         </p>
-
-        <PhoneLattic />
       </div>
     </section>
   );
@@ -377,17 +378,17 @@ function ServicesSection() {
             </div>
           </div>
 
-          {/* C2 — Référencement Google — 5 cols, lavande */}
+          {/* C2 — Référencement Google — 5 cols */}
           <div className="svc-card" style={{
             gridColumn: "span 5",
-            background: "var(--c2-bg)",
+            background: "#F0EFEB",
             color: "#0A0A0A",
             minHeight: "240px",
-            border: "1px solid rgba(40,85,160,.1)",
+            border: "1px solid rgba(0,0,0,.07)",
             animationDelay: ".10s",
           }}>
             <span className="svc-card-num">02</span>
-            <span className="svc-card-tag" style={{ background: "var(--s-blue)", color: "#fff" }}>SEO</span>
+            <span className="svc-card-tag" style={{ background: "#0A0A0A", color: "#fff" }}>SEO</span>
             <div className="svc-card-title">Référencement<br/>Google</div>
             <p className="svc-card-body" style={{ color: "rgba(0,0,0,.5)" }}>
               Apparaître en tête des résultats locaux. Plus de visibilité, plus de clients qui vous trouvent eux-mêmes.
@@ -396,18 +397,18 @@ function ServicesSection() {
               {[1,2,3,4,5].map((i) => (
                 <div key={i} style={{
                   width: "18px", height: "18px",
-                  background: "var(--s-orange)",
+                  background: "#0A0A0A",
                   clipPath: "polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)",
                 }}/>
               ))}
             </div>
-            <span className="svc-bg-text" style={{ color: "rgba(40,85,160,.06)", right: "-10px", bottom: "-18px" }}>SEO</span>
+            <span className="svc-bg-text" style={{ color: "rgba(0,0,0,.05)", right: "-10px", bottom: "-18px" }}>SEO</span>
           </div>
 
-          {/* C3 — Carte fidélité — 4 cols, crème */}
+          {/* C3 — Carte fidélité — 4 cols */}
           <div className="svc-card" style={{
             gridColumn: "span 4",
-            background: "var(--c3-bg)",
+            background: "#FFFFFF",
             color: "#0A0A0A",
             border: "1px solid rgba(0,0,0,.07)",
             minHeight: "210px",
@@ -430,17 +431,17 @@ function ServicesSection() {
             <span className="svc-bg-text" style={{ color: "rgba(0,0,0,.04)", right: "-15px", bottom: "-10px" }}>VIP</span>
           </div>
 
-          {/* C4 — Avis Google — 4 cols, sable */}
+          {/* C4 — Avis Google — 4 cols */}
           <div className="svc-card" style={{
             gridColumn: "span 4",
-            background: "var(--c4-bg)",
+            background: "#E8E6E0",
             color: "#0A0A0A",
             border: "1px solid rgba(0,0,0,.07)",
             minHeight: "210px",
             animationDelay: ".20s",
           }}>
             <span className="svc-card-num">04</span>
-            <span className="svc-card-tag" style={{ background: "var(--s-orange)", color: "#fff" }}>Réputation</span>
+            <span className="svc-card-tag" style={{ background: "#0A0A0A", color: "#fff" }}>Réputation</span>
             <div className="svc-card-title">Avis Google<br/>certifiés</div>
             <p className="svc-card-body" style={{ color: "#777" }}>
               Collectez de vrais avis 5 étoiles automatiquement. Votre réputation en pilote automatique.
@@ -455,10 +456,10 @@ function ServicesSection() {
             <span className="svc-bg-text" style={{ color: "rgba(0,0,0,.04)", right: "-10px", bottom: "-10px" }}>★★★</span>
           </div>
 
-          {/* C5 — Menuboard & flyers — 4 cols, bleu nuit */}
+          {/* C5 — Menuboard & flyers — 4 cols */}
           <div className="svc-card" style={{
             gridColumn: "span 4",
-            background: "var(--c5-bg)",
+            background: "#2A2A2A",
             color: "white",
             minHeight: "210px",
             animationDelay: ".25s",
@@ -483,10 +484,10 @@ function ServicesSection() {
             <span className="svc-bg-text" style={{ color: "rgba(255,255,255,.05)", right: "-10px", bottom: "-10px" }}>ART</span>
           </div>
 
-          {/* C6 — Automatisation — 12 cols, stone */}
+          {/* C6 — Automatisation — 12 cols */}
           <div className="svc-card svc-c6" style={{
             gridColumn: "span 12",
-            background: "var(--c6-bg)",
+            background: "#F5F4F0",
             color: "#0A0A0A",
             border: "1px solid rgba(0,0,0,.07)",
             padding: "28px 36px",

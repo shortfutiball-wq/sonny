@@ -15,7 +15,7 @@ const CSS = `
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255,255,255,.55);
+  background: rgba(248,248,246,.88);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 14px;
