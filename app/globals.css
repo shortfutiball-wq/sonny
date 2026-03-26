@@ -1,19 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F5F0E8;
-  --foreground: #0d0d0d;
+  --bg-page:      #F5F5F0;
+  --bg-dark:      #0A0A0A;
+  --bg-near-dark: #1A1A1A;
+  --text-primary: #0A0A0A;
+  --text-muted:   #666666;
+  --text-white:   #FFFFFF;
+  --accent-lime:  #D4FF00;
+  --accent-mag:   #FF00FF;
+  --accent-cyan:  #00CFFF;
+  --accent-red:   #FF4500;
+  --border-light: #E0E0D8;
+  --border-dark:  #2A2A2A;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-syne);
-  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-anton);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-syne), sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-inter), Inter, sans-serif;
+}
+
+.font-anton {
+  font-family: var(--font-anton), Anton, Impact, sans-serif;
+}
+
+.container-uc {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+@media (max-width: 768px) {
+  .container-uc {
+    padding: 0 20px;
+  }
 }

@@ -1,36 +1,29 @@
 import type { Metadata } from "next";
-import { Syne, Cormorant } from "next/font/google";
+import { Anton, Inter } from "next/font/google";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-syne",
+const anton = Anton({
+  variable: "--font-anton",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: "400",
 });
 
-const cormorant = Cormorant({
-  variable: "--font-cormorant",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
-  title: "Sonny — Agence de croissance",
-  description: "De nouveaux clients chaque mois. Tout simplement.",
+  title: "UGLYCASH",
+  description: "More opportunity for our Generation.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="fr"
-      className={`${syne.variable} ${cormorant.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${anton.variable} ${inter.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
