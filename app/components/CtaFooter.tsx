@@ -36,11 +36,16 @@ const CSS = `
   margin-bottom: 48px;
   line-height: 1.6;
 }
+.form-bento {
+  background: rgba(255,255,255,.72);
+  border-radius: 20px;
+  padding: 28px 28px 24px;
+  text-align: left;
+}
 .cta-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  text-align: left;
 }
 .form-row {
   display: grid;
@@ -122,10 +127,9 @@ const CSS = `
 /* ── FOOTER ── */
 .lattic-footer {
   background: var(--bg-page);
-  padding: 100px 48px 0;
+  padding: 60px 48px 0;
   overflow: hidden;
   margin-top: 40px;
-  border-top: 1px solid rgba(0,0,0,.07);
 }
 .footer-contact {
   display: flex;
@@ -154,11 +158,12 @@ const CSS = `
   display: block;
   width: 100vw;
   margin-left: calc(-48px);
-  margin-bottom: -0.18em;
+  margin-bottom: -0.09em;
 }
 @media(max-width:600px) {
   .form-row { grid-template-columns: 1fr; }
-  .lattic-footer { padding: 60px 20px 0; }
+  .form-bento { padding: 20px 16px; }
+  .lattic-footer { padding: 40px 20px 0; }
   .footer-wordmark { margin-left: calc(-20px); }
   .footer-contact { flex-direction: column; gap: 8px; }
 }
@@ -178,26 +183,28 @@ export default function CtaFooter() {
         </h2>
         <p className="cta-sub">On répond sous 24h. Pas de jargon, juste des résultats.</p>
 
-        <form className="cta-form" onSubmit={(e) => e.preventDefault()}>
-          <div className="form-row">
-            <div className="form-field">
-              <label>Téléphone</label>
-              <input type="tel" placeholder="Votre numéro de téléphone" />
+        <div className="form-bento">
+          <form className="cta-form" onSubmit={(e) => e.preventDefault()}>
+            <div className="form-row">
+              <div className="form-field">
+                <label>Téléphone</label>
+                <input type="tel" placeholder="Votre numéro de téléphone" />
+              </div>
+              <div className="form-field">
+                <label>Email</label>
+                <input type="email" placeholder="votre@email.com" />
+              </div>
             </div>
             <div className="form-field">
-              <label>Email</label>
-              <input type="email" placeholder="votre@email.com" />
+              <label>Remarques <span className="optional">(facultatif)</span></label>
+              <textarea placeholder="Décrivez votre projet, vos objectifs, vos questions..." />
             </div>
-          </div>
-          <div className="form-field">
-            <label>Remarques <span className="optional">(facultatif)</span></label>
-            <textarea placeholder="Décrivez votre projet, vos objectifs, vos questions..." />
-          </div>
-          <div className="form-submit">
-            <button className="btn-demarrer" type="submit">Démarrer →</button>
-            <span className="form-note">Aucun engagement. On vous recontacte sous 24h.</span>
-          </div>
-        </form>
+            <div className="form-submit">
+              <button className="btn-demarrer" type="submit">Démarrer →</button>
+              <span className="form-note">Aucun engagement. On vous recontacte sous 24h.</span>
+            </div>
+          </form>
+        </div>
       </section>
 
       {/* Footer */}
