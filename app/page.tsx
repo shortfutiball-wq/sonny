@@ -1,5 +1,7 @@
 "use client";
 
+import PhoneLattic from "./components/PhoneLattic";
+
 /* ─── SVG COMPONENTS ─────────────────────────────────────────── */
 
 function PhoneMockup({ small = false }: { small?: boolean }) {
@@ -293,25 +295,7 @@ function Hero() {
           Agence experte en référencement Google.
         </p>
 
-        <div style={{ position: "relative", display: "inline-block" }}>
-          <PhoneMockup />
-          <div style={{
-            position: "absolute",
-            bottom: "90px",
-            right: "-30px",
-            background: "#D4FF00",
-            color: "#0A0A0A",
-            fontSize: "12px",
-            fontWeight: 700,
-            fontFamily: "var(--font-inter), Inter, sans-serif",
-            padding: "8px 14px",
-            borderRadius: "8px",
-            transform: "rotate(-8deg)",
-            whiteSpace: "nowrap",
-          }}>
-            Up to 6% Cashback
-          </div>
-        </div>
+        <PhoneLattic />
       </div>
     </section>
   );
@@ -340,7 +324,7 @@ function ServicesSection() {
             textTransform: "uppercase",
             color: "#0A0A0A",
           }}>
-            L&apos;EXPERTISE EN ACTION<br />AU SERVICE DE VOS OBJECTIFS
+            TOUT CE DONT<br />VOUS AVEZ BESOIN
           </h2>
         </div>
 
