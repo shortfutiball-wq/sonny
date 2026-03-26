@@ -122,21 +122,16 @@ const CSS = `
 /* ── FOOTER ── */
 .lattic-footer {
   background: var(--bg-page);
-  padding: 60px 48px 0;
+  padding: 100px 48px 0;
   overflow: hidden;
-}
-.footer-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 48px;
-  gap: 40px;
-  flex-wrap: wrap;
+  margin-top: 40px;
+  border-top: 1px solid rgba(0,0,0,.07);
 }
 .footer-contact {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex-direction: row;
+  gap: 28px;
+  margin-bottom: 60px;
 }
 .footer-contact a {
   font-family: var(--font-dm), 'DM Sans', sans-serif;
@@ -147,48 +142,25 @@ const CSS = `
   transition: color .15s;
 }
 .footer-contact a:hover { color: #0A0A0A; }
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
-}
-.footer-links a {
-  font-family: var(--font-dm), 'DM Sans', sans-serif;
-  font-size: 13px;
-  color: #777;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color .15s;
-}
-.footer-links a:hover { color: #0A0A0A; }
 .footer-wordmark {
   font-family: var(--font-anton), Anton, Impact, sans-serif;
-  font-size: clamp(110px, 19vw, 260px);
-  line-height: .78;
+  font-size: clamp(180px, 28vw, 9999px);
+  line-height: .82;
   letter-spacing: -.02em;
   color: #0A0A0A;
   text-transform: uppercase;
   text-align: center;
   user-select: none;
-}
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 0 18px;
-  margin-top: 6px;
-}
-.footer-bottom span {
-  font-family: var(--font-dm), 'DM Sans', sans-serif;
-  font-size: 11px;
-  color: #777;
+  display: block;
+  width: 100vw;
+  margin-left: calc(-48px);
+  margin-bottom: -0.18em;
 }
 @media(max-width:600px) {
   .form-row { grid-template-columns: 1fr; }
-  .lattic-footer { padding: 40px 20px 0; }
-  .footer-top { flex-direction: column; align-items: flex-start; }
-  .footer-links { align-items: flex-start; }
+  .lattic-footer { padding: 60px 20px 0; }
+  .footer-wordmark { margin-left: calc(-20px); }
+  .footer-contact { flex-direction: column; gap: 8px; }
 }
 `;
 
@@ -230,24 +202,12 @@ export default function CtaFooter() {
 
       {/* Footer */}
       <footer className="lattic-footer">
-        <div className="footer-top">
-          <div className="footer-contact">
-            <a href="mailto:lattic.agence@gmail.com">lattic.agence@gmail.com</a>
-            <a href="tel:+33759750149">07 59 75 01 49</a>
-          </div>
-          <div className="footer-links">
-            <a href="#">Mentions légales</a>
-            <a href="#">Confidentialité</a>
-            <a href="#">Contact</a>
-          </div>
+        <div className="footer-contact">
+          <a href="mailto:lattic.agence@gmail.com">lattic.agence@gmail.com</a>
+          <a href="tel:+33759750149">07 59 75 01 49</a>
         </div>
 
         <div className="footer-wordmark">LATTIC</div>
-
-        <div className="footer-bottom">
-          <span>© 2025 Lattic. Tous droits réservés.</span>
-          <span>Made with ♥ in Paris</span>
-        </div>
       </footer>
     </>
   );
