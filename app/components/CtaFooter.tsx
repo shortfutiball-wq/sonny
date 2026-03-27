@@ -335,7 +335,7 @@ export default function CtaFooter() {
                 </div>
               </div>
               <div className="form-field">
-                <label>Remarques <span className="optional">(facultatif)</span></label>
+                <label>Expliquez nous votre projet !</label>
                 <textarea
                   placeholder="Décrivez votre projet, vos objectifs, vos questions..."
                   value={message}
