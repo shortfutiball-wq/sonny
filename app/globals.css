@@ -147,8 +147,13 @@ body {
   .svc-grid > * { grid-column: span 12 !important; }
   .svc-c6 { flex-direction: column !important; gap: 20px !important; }
   .svc-c1-visual { display: none !important; }
-  .svc-card-title { font-size: 22px !important; }
+  .svc-card-title { font-size: 31px !important; }
   .svc-bg-text { font-size: 80px !important; }
+
+  /* +40% sur tous les titres de section */
+  .portfolio-header h2 { font-size: 73px !important; }
+  .t-headline           { font-size: 73px !important; }
+  .cta-title            { font-size: 73px !important; }
 }
 
 /* ── Section separators ── */
