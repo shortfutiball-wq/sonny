@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export async function POST(req: NextRequest) {
   const { phone, email, message } = await req.json();
@@ -8,18 +8,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Champs manquants" }, { status: 400 });
   }
 
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_APP_PASSWORD,
-    },
-  });
+  if (!process.env.RESEND_API_KEY) {
+    console.warn("[contact] RESEND_API_KEY manquant — contact non envoyé:", { phone, email, message });
+    return NextResponse.json({ ok: true });
+  }
 
-  await transporter.sendMail({
-    from: `"Lattic Site" <${process.env.GMAIL_USER}>`,
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
+  await resend.emails.send({
+    from: "Lattic Site <onboarding@resend.dev>",
     to: "lattic.agence@gmail.com",
     subject: "🔔 Nouveau contact depuis le site Lattic",
     html: `
@@ -27,7 +24,7 @@ export async function POST(req: NextRequest) {
         <h2 style="font-size:22px;color:#0a0a0a;margin-bottom:24px;">Nouveau contact 🎯</h2>
         <table style="width:100%;border-collapse:collapse;">
           <tr>
-            <td style="padding:10px 0;font-size:13px;color:#777;width:100px;">Téléphone</td>
+            <td style="padding:10px 0;font-size:13px;color:#777;width:110px;">Téléphone</td>
             <td style="padding:10px 0;font-size:14px;color:#0a0a0a;font-weight:600;">${phone || "—"}</td>
           </tr>
           <tr style="border-top:1px solid rgba(0,0,0,.08)">
@@ -35,11 +32,11 @@ export async function POST(req: NextRequest) {
             <td style="padding:10px 0;font-size:14px;color:#0a0a0a;font-weight:600;">${email || "—"}</td>
           </tr>
           <tr style="border-top:1px solid rgba(0,0,0,.08)">
-            <td style="padding:10px 0;font-size:13px;color:#777;vertical-align:top">Remarques</td>
+            <td style="padding:10px 0;font-size:13px;color:#777;vertical-align:top;">Remarques</td>
             <td style="padding:10px 0;font-size:14px;color:#0a0a0a;">${message || "—"}</td>
           </tr>
         </table>
-        <p style="margin-top:28px;font-size:11px;color:#aaa;">Envoyé depuis lattic.fr</p>
+        <p style="margin-top:28px;font-size:11px;color:#aaa;">Envoyé depuis le site Lattic</p>
       </div>
     `,
   });
