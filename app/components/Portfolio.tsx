@@ -64,8 +64,8 @@ const CSS = `
   gap: 14px;
   width: max-content;
 }
-.scroll-row.sleft  { animation: scrollLeft  28s linear infinite; }
-.scroll-row.sright { animation: scrollRight 32s linear infinite; }
+.scroll-row.sleft  { animation: scrollLeft  36s linear infinite; }
+.scroll-row.sright { animation: scrollRight 42s linear infinite; }
 @keyframes scrollLeft  { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 @keyframes scrollRight { from{transform:translateX(-50%)} to{transform:translateX(0)} }
 .scroll-row:hover { animation-play-state: paused; }
@@ -147,6 +147,8 @@ const ROW1 = [
   { img: "/p-menu-digital.jpg", tag: "Digital Signage", label: "Menu Digital" },
   { img: "/p-roofing.png", tag: "Site Web", label: "Roofing Pro" },
   { img: "/p-charleys.webp", tag: "Restauration", label: "Charley's" },
+  { img: "/p-poke-bowl.png", tag: "Food", label: "Poke Bowl" },
+  { img: "/p-visceri-truffes.png", tag: "Restaurant", label: "Visceri" },
   { img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=560&q=80", tag: "Formation", label: "Académie Pro" },
   { img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=560&q=80", tag: "Traiteur", label: "Le Festin" },
 ];
@@ -160,6 +162,8 @@ const ROW2 = [
   { img: "/p-plomberie.jpg", tag: "Site Web", label: "Plomberie Pro" },
   { img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=560&q=80", tag: "E-commerce", label: "ShopNow" },
   { img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=560&q=80", tag: "Food", label: "Saveurs du Monde" },
+  { img: "/p-resort-luxury.png", tag: "Hôtellerie", label: "New Perspectives" },
+  { img: "/p-cabinet-juridique.png", tag: "Juridique", label: "Cabinet Nadine" },
   { img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=560&q=80", tag: "Corporate", label: "DeltaCorp" },
 ];
 
