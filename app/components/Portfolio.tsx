@@ -139,36 +139,36 @@ const CSS = `
 `;
 
 const ROW1 = [
-  { img: "/p-savor-luxury.jpg", tag: "Restaurant", label: "Savor Luxury" },
-  { img: "/p-midnight-lounge.webp", tag: "Bar & Lounge", label: "Midnight Lounge" },
-  { img: "/p-seafood-lounge.jpg", tag: "Restaurant", label: "Seafood & Lounge" },
-  { img: "/p-mcdo-bigmac.jpg", tag: "Fast Food", label: "McDonald's" },
-  { img: "/p-building-beyond.jpg", tag: "Architecture", label: "Building Beyond" },
-  { img: "/p-menu-digital.jpg", tag: "Digital Signage", label: "Menu Digital" },
-  { img: "/p-roofing.jpg", tag: "Site Web", label: "Roofing Pro" },
-  { img: "/p-charleys.webp", tag: "Restauration", label: "Charley's" },
-  { img: "/p-poke-bowl.jpg", tag: "Food", label: "Poke Bowl" },
-  { img: "/p-visceri-truffes.jpg", tag: "Restaurant", label: "Visceri" },
-  { img: "/p-nova-btp.jpg", tag: "Construction", label: "Nova BTP" },
-  { img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=560&q=80", tag: "Traiteur", label: "Le Festin" },
+  { img: "/p-savor-luxury.jpg",   tag: "Restaurant",      label: "Savor Luxury",    pos: "center 30%" },
+  { img: "/p-midnight-lounge.webp",tag: "Bar & Lounge",   label: "Midnight Lounge", pos: "center 20%" },
+  { img: "/p-seafood-lounge.jpg",  tag: "Restaurant",     label: "Seafood & Lounge",pos: "center 25%" },
+  { img: "/p-mcdo-bigmac.jpg",     tag: "Fast Food",      label: "McDonald's",      pos: "center center" },
+  { img: "/p-building-beyond.jpg", tag: "Architecture",   label: "Building Beyond", pos: "center 15%" },
+  { img: "/p-menu-digital.jpg",    tag: "Digital Signage",label: "Menu Digital",    pos: "center 20%" },
+  { img: "/p-roofing.jpg",         tag: "Site Web",       label: "Roofing Pro",     pos: "center 15%" },
+  { img: "/p-charleys.webp",       tag: "Restauration",   label: "Charley's",       pos: "center 20%" },
+  { img: "/p-poke-bowl.jpg",       tag: "Food",           label: "Poke Bowl",       pos: "center center" },
+  { img: "/p-visceri-truffes.jpg", tag: "Restaurant",     label: "Visceri",         pos: "center 25%" },
+  { img: "/p-nova-btp.jpg",        tag: "Construction",   label: "Nova BTP",        pos: "center center" },
+  { img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=560&q=80", tag: "Traiteur", label: "Le Festin", pos: "center 40%" },
 ];
 
 const ROW2 = [
-  { img: "/p-precision-living.jpg", tag: "Immobilier", label: "Precision Living" },
-  { img: "/p-tripadvisor-nfc.jpg", tag: "Avis Google", label: "NFC Reviews" },
-  { img: "/p-burger-crispy.jpg", tag: "Fast Food", label: "Crispy Burger" },
-  { img: "/p-apple-wallet.jpg", tag: "Mobile Pay", label: "Apple Wallet" },
-  { img: "/p-mcdo-promo.jpg", tag: "Social Media", label: "McDonald's Promo" },
-  { img: "/p-plomberie.jpg", tag: "Site Web", label: "Plomberie Pro" },
-  { img: "/p-shopnow.jpg", tag: "Architecture", label: "Timeless Design" },
-  { img: "/p-saveurs.jpg", tag: "Restaurant", label: "Pibza" },
-  { img: "/p-resort-luxury.jpg", tag: "Hôtellerie", label: "New Perspectives" },
-  { img: "/p-cabinet-juridique.jpg", tag: "Juridique", label: "Cabinet Nadine" },
-  { img: "/p-bake-lounge.jpg", tag: "Boulangerie", label: "The Bake Lounge" },
-  { img: "/p-deltacorp-new.jpg", tag: "Restaurant", label: "Dark Lotus" },
+  { img: "/p-precision-living.jpg",  tag: "Immobilier",    label: "Precision Living",  pos: "center 20%" },
+  { img: "/p-tripadvisor-nfc.jpg",   tag: "Avis Google",   label: "NFC Reviews",       pos: "center 30%" },
+  { img: "/p-burger-crispy.jpg",     tag: "Fast Food",     label: "Crispy Burger",     pos: "center center" },
+  { img: "/p-apple-wallet.jpg",      tag: "Mobile Pay",    label: "Apple Wallet",      pos: "center 20%" },
+  { img: "/p-mcdo-promo.jpg",        tag: "Social Media",  label: "McDonald's Promo",  pos: "center center" },
+  { img: "/p-plomberie.jpg",         tag: "Site Web",      label: "Plomberie Pro",     pos: "center 15%" },
+  { img: "/p-shopnow.jpg",           tag: "Architecture",  label: "Timeless Design",   pos: "center 15%" },
+  { img: "/p-saveurs.jpg",           tag: "Restaurant",    label: "Pibza",             pos: "center 20%" },
+  { img: "/p-resort-luxury.jpg",     tag: "Hôtellerie",   label: "New Perspectives",  pos: "center 25%" },
+  { img: "/p-cabinet-juridique.jpg", tag: "Juridique",     label: "Cabinet Nadine",    pos: "center 15%" },
+  { img: "/p-bake-lounge.jpg",       tag: "Boulangerie",   label: "The Bake Lounge",   pos: "center 20%" },
+  { img: "/p-deltacorp-new.jpg",     tag: "Restaurant",    label: "Dark Lotus",        pos: "center 25%" },
 ];
 
-type CardData = { img?: string; tag?: string; label?: string; placeholder?: boolean };
+type CardData = { img?: string; tag?: string; label?: string; placeholder?: boolean; pos?: string };
 
 function PCard({ card, idx }: { card: CardData; idx: number }) {
   if (card.placeholder) {
@@ -185,7 +185,7 @@ function PCard({ card, idx }: { card: CardData; idx: number }) {
         alt={card.label || ""}
         fill
         sizes="(max-width: 600px) 220px, 280px"
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: "cover", objectPosition: card.pos ?? "center center" }}
         loading="lazy"
       />
       <span className="pcard-tag">{card.tag}</span>
