@@ -374,7 +374,7 @@ export default function CtaFooter() {
       <footer className="lattic-footer">
         <div className="footer-wordmark">LATTIC</div>
         <div className="footer-bottom">
-          <span>© 2025 Lattic. Tous droits réservés.</span>
+          <span>© 2026 Lattic. Tous droits réservés.</span>
         </div>
       </footer>
     </>

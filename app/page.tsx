@@ -423,6 +423,7 @@ function ServicesSection() {
             background: "#FFFFFF",
             color: "#0A0A0A",
             minHeight: "210px",
+            paddingBottom: "82px",
           }}>
             <span className="svc-card-num">03</span>
             <span className="svc-card-tag" style={{ background: "#0A0A0A", color: "#fff" }}>Fidélité</span>
@@ -447,11 +448,12 @@ function ServicesSection() {
             background: "#F5E5D0",
             color: "#0A0A0A",
             minHeight: "210px",
+            paddingBottom: "82px",
           }}>
             <span className="svc-card-num">04</span>
             <span className="svc-card-tag" style={{ background: "#8A4010", color: "#fff" }}>Réputation</span>
             <div className="svc-card-title">Avis Google<br/>certifiés</div>
-            <p className="svc-card-body" style={{ color: "#777" }}>
+            <p className="svc-card-body" style={{ color: "#777", paddingRight: "88px" }}>
               Collectez de vrais avis 5 étoiles automatiquement. Votre réputation en pilote automatique.
             </p>
             <div style={{
