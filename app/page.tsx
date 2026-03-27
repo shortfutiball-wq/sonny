@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Portfolio from "./components/Portfolio";
 import Testimonials from "./components/Testimonials";
 import NavLattic from "./components/NavLattic";
@@ -277,7 +278,7 @@ function Hero() {
       overflow: "hidden",
     }}>
       <div className="container-uc" style={{ position: "relative" }}>
-        <h1 className="font-anton" style={{
+        <h1 data-reveal className="font-anton" style={{
           fontSize: "clamp(92px, 14vw, 154px)",
           lineHeight: 0.88,
           letterSpacing: "-0.01em",
@@ -289,11 +290,11 @@ function Hero() {
           TOUT SIMPLEMENT
         </h1>
 
-        <div style={{ marginTop: "40px", marginBottom: "8px" }}>
+        <div data-reveal data-reveal-delay="1" style={{ marginTop: "40px", marginBottom: "8px" }}>
           <GlobeInteractive />
         </div>
 
-        <p style={{
+        <p data-reveal data-reveal-delay="2" style={{
           fontFamily: "var(--font-inter), Inter, sans-serif",
           fontSize: "14px",
           color: "var(--text-muted)",
@@ -321,7 +322,7 @@ function ServicesSection() {
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 48px" }}>
 
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "48px" }}>
+        <div data-reveal style={{ textAlign: "center", marginBottom: "48px" }}>
           <div style={{
             display: "inline-block",
             fontFamily: "var(--font-dm),'DM Sans',sans-serif",
@@ -355,12 +356,11 @@ function ServicesSection() {
         }}>
 
           {/* C1 — Site haute conversion — 7 cols, noir */}
-          <div className="svc-card" style={{
+          <div data-reveal data-reveal-delay="1" className="svc-card" style={{
             gridColumn: "span 7",
             background: "var(--c1-bg)",
             color: "white",
             minHeight: "240px",
-            animationDelay: ".05s",
           }}>
             <span className="svc-card-num" style={{ color: "rgba(255,255,255,.2)" }}>01</span>
             <span className="svc-card-tag" style={{ background: "white", color: "#000" }}>Web</span>
@@ -393,13 +393,11 @@ function ServicesSection() {
           </div>
 
           {/* C2 — Référencement Google — 5 cols */}
-          <div className="svc-card" style={{
+          <div data-reveal data-reveal-delay="2" className="svc-card" style={{
             gridColumn: "span 5",
             background: "#DFF0E4",
             color: "#0A0A0A",
             minHeight: "240px",
-            border: "1px solid rgba(0,0,0,.07)",
-            animationDelay: ".10s",
           }}>
             <span className="svc-card-num">02</span>
             <span className="svc-card-tag" style={{ background: "#1A5C3A", color: "#fff" }}>SEO</span>
@@ -420,13 +418,11 @@ function ServicesSection() {
           </div>
 
           {/* C3 — Carte fidélité — 4 cols */}
-          <div className="svc-card" style={{
+          <div data-reveal data-reveal-delay="3" className="svc-card" style={{
             gridColumn: "span 4",
             background: "#FFFFFF",
             color: "#0A0A0A",
-            border: "1px solid rgba(0,0,0,.07)",
             minHeight: "210px",
-            animationDelay: ".15s",
           }}>
             <span className="svc-card-num">03</span>
             <span className="svc-card-tag" style={{ background: "#0A0A0A", color: "#fff" }}>Fidélité</span>
@@ -446,13 +442,11 @@ function ServicesSection() {
           </div>
 
           {/* C4 — Avis Google — 4 cols */}
-          <div className="svc-card" style={{
+          <div data-reveal data-reveal-delay="4" className="svc-card" style={{
             gridColumn: "span 4",
             background: "#F5E5D0",
             color: "#0A0A0A",
-            border: "1px solid rgba(0,0,0,.07)",
             minHeight: "210px",
-            animationDelay: ".20s",
           }}>
             <span className="svc-card-num">04</span>
             <span className="svc-card-tag" style={{ background: "#8A4010", color: "#fff" }}>Réputation</span>
@@ -471,12 +465,11 @@ function ServicesSection() {
           </div>
 
           {/* C5 — Menuboard & flyers — 4 cols */}
-          <div className="svc-card" style={{
+          <div data-reveal data-reveal-delay="5" className="svc-card" style={{
             gridColumn: "span 4",
             background: "#1C2E40",
             color: "white",
             minHeight: "210px",
-            animationDelay: ".25s",
           }}>
             <span className="svc-card-num" style={{ color: "rgba(255,255,255,.2)" }}>05</span>
             <span className="svc-card-tag" style={{
@@ -499,11 +492,10 @@ function ServicesSection() {
           </div>
 
           {/* C6 — Automatisation — 12 cols */}
-          <div className="svc-card svc-c6" style={{
+          <div data-reveal data-reveal-delay="6" className="svc-card svc-c6" style={{
             gridColumn: "span 12",
             background: "#E5EDF8",
             color: "#0A0A0A",
-            border: "1px solid rgba(0,0,0,.07)",
             padding: "28px 36px",
             display: "flex",
             alignItems: "center",
@@ -859,7 +851,27 @@ function About() {
 
 /* ─── PAGE ROOT ──────────────────────────────────────────────── */
 
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll("[data-reveal]");
+    const ob = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("revealed");
+            ob.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
+    els.forEach((el) => ob.observe(el));
+    return () => ob.disconnect();
+  }, []);
+}
+
 export default function Home() {
+  useReveal();
   return (
     <main>
       <NavLattic />

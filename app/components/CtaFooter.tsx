@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 const CSS = `
 /* ── CTA SECTION ── */
 .cta-section {
@@ -116,9 +120,14 @@ const CSS = `
   font-weight: 700;
   cursor: pointer;
   letter-spacing: .02em;
-  transition: opacity .15s;
+  transition: transform .2s cubic-bezier(.22,1,.36,1), box-shadow .2s cubic-bezier(.22,1,.36,1), opacity .15s;
 }
-.btn-demarrer:hover { opacity: .8; }
+.btn-demarrer:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 14px 40px rgba(0,0,0,.28);
+}
+.btn-demarrer:active { transform: translateY(0) scale(1); }
+.btn-demarrer:disabled { opacity: .55; cursor: not-allowed; }
 .form-note {
   font-family: var(--font-dm), 'DM Sans', sans-serif;
   font-size: 12px;
@@ -160,14 +169,51 @@ const CSS = `
   font-weight: 700;
   cursor: pointer;
   letter-spacing: .02em;
-  transition: opacity .15s;
+  transition: transform .2s cubic-bezier(.22,1,.36,1), box-shadow .2s cubic-bezier(.22,1,.36,1);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   margin-top: 12px;
 }
-.btn-whatsapp:hover { opacity: .88; }
+.btn-whatsapp:hover {
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 14px 40px rgba(37,211,102,.45);
+}
+.btn-whatsapp:active { transform: translateY(0) scale(1); }
+
+/* ── Success message ── */
+.form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 32px 0 8px;
+  text-align: center;
+}
+.form-success-icon {
+  width: 52px;
+  height: 52px;
+  background: #0A0A0A;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-success-title {
+  font-family: var(--font-anton), Anton, Impact, sans-serif;
+  font-size: 28px;
+  text-transform: uppercase;
+  color: #0A0A0A;
+  line-height: 1;
+  letter-spacing: -.01em;
+}
+.form-success-sub {
+  font-family: var(--font-dm), 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.6;
+}
 
 /* ── FOOTER ── */
 .lattic-footer {
@@ -176,43 +222,6 @@ const CSS = `
   overflow: hidden;
   margin-top: 40px;
 }
-.footer-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 48px;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-.footer-contact {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.footer-contact a {
-  font-family: var(--font-dm), 'DM Sans', sans-serif;
-  font-size: 13px;
-  color: #777;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color .15s;
-}
-.footer-contact a:hover { color: #0A0A0A; }
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
-}
-.footer-links a {
-  font-family: var(--font-dm), 'DM Sans', sans-serif;
-  font-size: 13px;
-  color: #777;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color .15s;
-}
-.footer-links a:hover { color: #0A0A0A; }
 .footer-wordmark {
   font-family: var(--font-anton), Anton, Impact, sans-serif;
   font-size: clamp(180px, 28vw, 9999px);
@@ -245,12 +254,40 @@ const CSS = `
   .cta-section { padding: 100px 16px 80px; }
   .lattic-footer { padding: 40px 20px 0; }
   .footer-wordmark { margin-left: calc(-20px); }
-  .footer-top { flex-direction: column; align-items: flex-start; }
-  .footer-links { align-items: flex-start; }
 }
 `;
 
 export default function CtaFooter() {
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!phone && !email) {
+      setError("Merci de renseigner au moins un moyen de contact.");
+      return;
+    }
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone, email, message }),
+      });
+      if (!res.ok) throw new Error("Erreur serveur");
+      setSent(true);
+    } catch {
+      setError("Une erreur est survenue. Réessayez ou contactez-nous sur WhatsApp.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
@@ -265,26 +302,59 @@ export default function CtaFooter() {
         <p className="cta-sub">On répond sous 24h. Pas de jargon, juste des résultats.</p>
 
         <div className="form-bento">
-          <form className="cta-form" onSubmit={(e) => e.preventDefault()}>
-            <div className="form-row">
-              <div className="form-field">
-                <label>Téléphone</label>
-                <input type="tel" placeholder="Votre numéro de téléphone" />
+          {sent ? (
+            <div className="form-success">
+              <div className="form-success-icon">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M4 11l5 5 9-9" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <p className="form-success-title">Message envoyé !</p>
+              <p className="form-success-sub">On revient vers vous sous 24h.<br/>À très vite.</p>
+            </div>
+          ) : (
+            <form className="cta-form" onSubmit={handleSubmit}>
+              <div className="form-row">
+                <div className="form-field">
+                  <label>Téléphone</label>
+                  <input
+                    type="tel"
+                    placeholder="Votre numéro de téléphone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </div>
+                <div className="form-field">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    placeholder="votre@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
               </div>
               <div className="form-field">
-                <label>Email</label>
-                <input type="email" placeholder="votre@email.com" />
+                <label>Remarques <span className="optional">(facultatif)</span></label>
+                <textarea
+                  placeholder="Décrivez votre projet, vos objectifs, vos questions..."
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
               </div>
-            </div>
-            <div className="form-field">
-              <label>Remarques <span className="optional">(facultatif)</span></label>
-              <textarea placeholder="Décrivez votre projet, vos objectifs, vos questions..." />
-            </div>
-            <div className="form-submit">
-              <button className="btn-demarrer" type="submit">Démarrer →</button>
-              <span className="form-note">Aucun engagement. On vous recontacte sous 24h.</span>
-            </div>
-          </form>
+              {error && (
+                <p style={{ fontFamily: "var(--font-dm),'DM Sans',sans-serif", fontSize: "12px", color: "#c0392b" }}>
+                  {error}
+                </p>
+              )}
+              <div className="form-submit">
+                <button className="btn-demarrer" type="submit" disabled={loading}>
+                  {loading ? "Envoi en cours…" : "Démarrer →"}
+                </button>
+                <span className="form-note">Aucun engagement. On vous recontacte sous 24h.</span>
+              </div>
+            </form>
+          )}
 
           <div className="form-sep"><span>ou</span></div>
 
@@ -303,6 +373,10 @@ export default function CtaFooter() {
       {/* Footer */}
       <footer className="lattic-footer">
         <div className="footer-wordmark">LATTIC</div>
+        <div className="footer-bottom">
+          <span>© 2025 Lattic. Tous droits réservés.</span>
+          <span>Made with ♥ in Paris</span>
+        </div>
       </footer>
     </>
   );
