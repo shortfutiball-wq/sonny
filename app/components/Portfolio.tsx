@@ -140,22 +140,25 @@ const CSS = `
 
 const ROW1 = [
   { img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=560&q=80", tag: "Restaurant", label: "La Bella Vita" },
+  { img: "/p-midnight-lounge.webp", tag: "Bar & Lounge", label: "Midnight Lounge" },
   { img: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=560&q=80", tag: "Mode", label: "Studio Élise" },
+  { img: "/p-mcdo-bigmac.jpg", tag: "Fast Food", label: "McDonald's" },
   { img: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=560&q=80", tag: "B2B", label: "Nexia Conseil" },
-  { placeholder: true },
+  { img: "/p-menu-digital.jpg", tag: "Digital Signage", label: "Menu Digital" },
   { img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=560&q=80", tag: "Sport", label: "FitForce Paris" },
+  { img: "/p-charleys.webp", tag: "Restauration", label: "Charley's" },
   { img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=560&q=80", tag: "Formation", label: "Académie Pro" },
   { img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=560&q=80", tag: "Traiteur", label: "Le Festin" },
-  { placeholder: true },
 ];
 
 const ROW2 = [
   { img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=560&q=80", tag: "Immobilier", label: "Prestige Immo" },
-  { placeholder: true },
+  { img: "/p-tripadvisor-nfc.jpg", tag: "Avis Google", label: "NFC Reviews" },
   { img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=560&q=80", tag: "Tech", label: "AppZen" },
+  { img: "/p-apple-wallet.jpg", tag: "Mobile Pay", label: "Apple Wallet" },
   { img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=560&q=80", tag: "RH", label: "TalentFlow" },
+  { img: "/p-plomberie.jpg", tag: "Site Web", label: "Plomberie Pro" },
   { img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=560&q=80", tag: "E-commerce", label: "ShopNow" },
-  { placeholder: true },
   { img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=560&q=80", tag: "Food", label: "Saveurs du Monde" },
   { img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=560&q=80", tag: "Corporate", label: "DeltaCorp" },
 ];
