@@ -64,8 +64,8 @@ const CSS = `
   gap: 14px;
   width: max-content;
 }
-.scroll-row.sleft  { animation: scrollLeft  36s linear infinite; }
-.scroll-row.sright { animation: scrollRight 42s linear infinite; }
+.scroll-row.sleft  { animation: scrollLeft  54s linear infinite; }
+.scroll-row.sright { animation: scrollRight 63s linear infinite; }
 @keyframes scrollLeft  { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 @keyframes scrollRight { from{transform:translateX(-50%)} to{transform:translateX(0)} }
 .scroll-row:hover { animation-play-state: paused; }
@@ -164,6 +164,7 @@ const ROW2 = [
   { img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=560&q=80", tag: "Food", label: "Saveurs du Monde" },
   { img: "/p-resort-luxury.png", tag: "Hôtellerie", label: "New Perspectives" },
   { img: "/p-cabinet-juridique.png", tag: "Juridique", label: "Cabinet Nadine" },
+  { img: "/p-bake-lounge.png", tag: "Boulangerie", label: "The Bake Lounge" },
   { img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=560&q=80", tag: "Corporate", label: "DeltaCorp" },
 ];
 
