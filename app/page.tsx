@@ -4,6 +4,7 @@ import Portfolio from "./components/Portfolio";
 import Testimonials from "./components/Testimonials";
 import NavLattic from "./components/NavLattic";
 import CtaFooter from "./components/CtaFooter";
+import { GlobeInteractive } from "./components/ui/cobe-globe-interactive";
 
 /* ─── SVG COMPONENTS ─────────────────────────────────────────── */
 
@@ -288,6 +289,9 @@ function Hero() {
           TOUT SIMPLEMENT
         </h1>
 
+        <div style={{ marginTop: "40px", marginBottom: "8px" }}>
+          <GlobeInteractive />
+        </div>
 
         <p style={{
           fontFamily: "var(--font-inter), Inter, sans-serif",
