@@ -298,7 +298,7 @@ function Hero() {
         <div data-reveal data-reveal-delay="2" style={{ display: "flex", justifyContent: "center", marginTop: "28px" }}>
           <button
             onClick={() => { const el = document.getElementById("contact"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}
-            className="group relative inline-flex items-center overflow-hidden rounded-full bg-[#0A0A0A] text-white cursor-pointer border-none ps-7 pe-[60px] h-12 transition-all duration-500 hover:ps-[60px] hover:pe-7"
+            className="group relative inline-flex items-center overflow-hidden rounded-full bg-[#0A0A0A] text-white cursor-pointer border-none pl-8 pr-14 h-12 transition-all duration-500 hover:pl-14 hover:pr-8"
             style={{ fontFamily: "var(--font-dm), 'DM Sans', sans-serif", fontSize: "15px", fontWeight: 700, letterSpacing: ".02em" }}
           >
             <span className="relative z-10 transition-all duration-500 whitespace-nowrap">
