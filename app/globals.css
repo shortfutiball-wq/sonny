@@ -40,6 +40,10 @@ body {
   background: var(--bg-page);
   color: var(--text-primary);
   font-family: var(--font-inter), Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 .font-anton {
@@ -143,4 +147,28 @@ body {
   .svc-grid > * { grid-column: span 12 !important; }
   .svc-c6 { flex-direction: column !important; gap: 20px !important; }
   .svc-c1-visual { display: none !important; }
+  .svc-card-title { font-size: 22px !important; }
+  .svc-bg-text { font-size: 80px !important; }
+}
+
+/* ── Testimonials will-change ── */
+.t-col-inner { will-change: transform; }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .scroll-row,
+  .t-col-inner {
+    animation: none !important;
+    will-change: auto !important;
+  }
+  .svc-card,
+  .pcard,
+  .avis-card {
+    transition: none !important;
+  }
 }

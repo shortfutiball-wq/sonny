@@ -273,7 +273,7 @@ function Hero() {
     <section style={{
       background: "var(--bg-page)",
       textAlign: "center",
-      padding: "80px 0 60px",
+      padding: "clamp(48px, 8vw, 80px) 0 clamp(40px, 6vw, 60px)",
       position: "relative",
       overflow: "hidden",
     }}>
@@ -290,7 +290,7 @@ function Hero() {
           TOUT SIMPLEMENT
         </h1>
 
-        <div data-reveal data-reveal-delay="1" style={{ marginTop: "40px", marginBottom: "8px" }}>
+        <div data-reveal data-reveal-delay="1" style={{ marginTop: "clamp(24px, 4vw, 40px)", marginBottom: "8px", maxWidth: "min(560px, 90vw)", margin: "clamp(24px, 4vw, 40px) auto 8px" }}>
           <GlobeInteractive />
         </div>
 

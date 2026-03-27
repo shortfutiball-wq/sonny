@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const CSS = `
 .portfolio-section {
   padding: 100px 0 80px;
@@ -64,8 +66,8 @@ const CSS = `
   gap: 14px;
   width: max-content;
 }
-.scroll-row.sleft  { animation: scrollLeft  54s linear infinite; }
-.scroll-row.sright { animation: scrollRight 63s linear infinite; }
+.scroll-row.sleft  { animation: scrollLeft  54s linear infinite; will-change: transform; }
+.scroll-row.sright { animation: scrollRight 63s linear infinite; will-change: transform; }
 @keyframes scrollLeft  { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 @keyframes scrollRight { from{transform:translateX(-50%)} to{transform:translateX(0)} }
 .scroll-row:hover { animation-play-state: paused; }
@@ -82,12 +84,10 @@ const CSS = `
 }
 .pcard:hover { transform: scale(1.02); }
 .pcard img {
-  width: 100%; height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform .4s ease;
+  transition: transform .4s ease !important;
 }
-.pcard:hover img { transform: scale(1.05); }
+.pcard:hover img { transform: scale(1.06) !important; }
 .pcard-overlay {
   position: absolute;
   inset: 0;
@@ -160,8 +160,8 @@ const ROW2 = [
   { img: "/p-apple-wallet.jpg", tag: "Mobile Pay", label: "Apple Wallet" },
   { img: "/p-mcdo-promo.png", tag: "Social Media", label: "McDonald's Promo" },
   { img: "/p-plomberie.jpg", tag: "Site Web", label: "Plomberie Pro" },
-  { img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=560&q=80", tag: "E-commerce", label: "ShopNow" },
-  { img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=560&q=80", tag: "Food", label: "Saveurs du Monde" },
+  { img: "/p-shopnow.png", tag: "Architecture", label: "Timeless Design" },
+  { img: "/p-saveurs.png", tag: "Restaurant", label: "Pibza" },
   { img: "/p-resort-luxury.png", tag: "Hôtellerie", label: "New Perspectives" },
   { img: "/p-cabinet-juridique.png", tag: "Juridique", label: "Cabinet Nadine" },
   { img: "/p-bake-lounge.png", tag: "Boulangerie", label: "The Bake Lounge" },
@@ -180,8 +180,14 @@ function PCard({ card, idx }: { card: CardData; idx: number }) {
   }
   return (
     <div className="pcard">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={card.img} alt={card.label} loading="lazy" />
+      <Image
+        src={card.img!}
+        alt={card.label || ""}
+        fill
+        sizes="(max-width: 600px) 220px, 280px"
+        style={{ objectFit: "cover" }}
+        loading="lazy"
+      />
       <span className="pcard-tag">{card.tag}</span>
       <div className="pcard-overlay">
         <span className="pcard-label">{card.label}</span>
