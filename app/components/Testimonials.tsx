@@ -249,8 +249,8 @@ export default function Testimonials() {
         <div className="testimonials-header">
           <div className="t-eyebrow">Avis clients</div>
           <h2 className="t-headline">
-            <span>SATISFAITS OU</span>
-            <span>REMBOURSÉS.</span>
+            <span>SATISFAIT OU</span>
+            <span>REMBOURSÉ.</span>
           </h2>
           <p className="t-sub">Des vrais clients, de vrais résultats. Zéro perte de temps.</p>
         </div>
