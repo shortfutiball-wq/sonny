@@ -297,16 +297,11 @@ function Hero() {
 
         <div data-reveal data-reveal-delay="2" style={{ display: "flex", justifyContent: "center", marginTop: "28px" }}>
           <button
+            className="hero-btn"
             onClick={() => { const el = document.getElementById("contact"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}
-            className="group relative inline-flex items-center overflow-hidden rounded-full bg-[#0A0A0A] text-white cursor-pointer border-none pl-8 pr-14 h-12 transition-all duration-500 hover:pl-14 hover:pr-8"
-            style={{ fontFamily: "var(--font-dm), 'DM Sans', sans-serif", fontSize: "15px", fontWeight: 700, letterSpacing: ".02em" }}
           >
-            <span className="relative z-10 transition-all duration-500 whitespace-nowrap">
-              Démarrer maintenant
-            </span>
-            <div className="absolute right-1 w-10 h-10 bg-white text-[#0A0A0A] rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-44px)] group-hover:rotate-45">
-              <ArrowUpRight size={16} />
-            </div>
+            <span className="hero-btn-text">Démarrer maintenant</span>
+            <div className="hero-btn-circle"><ArrowUpRight size={16} /></div>
           </button>
         </div>
 

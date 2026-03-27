@@ -1,3 +1,9 @@
+import type { LucideIcon } from "lucide-react";
+import {
+  Utensils, Zap, Flame, Rocket, Leaf, ChefHat,
+  Briefcase, TrendingUp, Megaphone, Wrench, ShoppingBag, Wine,
+} from "lucide-react";
+
 const CSS = `
 .testimonials-section {
   background: var(--bg-page);
@@ -102,10 +108,6 @@ const CSS = `
   width: 36px; height: 36px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-anton), Anton, Impact, sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  color: #fff;
   flex-shrink: 0;
 }
 .avis-name {
@@ -177,14 +179,9 @@ function GoogleBadge() {
   );
 }
 
-const AVATAR_COLORS: Record<string, string> = {
-  K: "#1A5C3A", S: "#B04030", M: "#B06820", A: "#3D3A9F",
-  J: "#1A7272", R: "#B04A18", C: "#2A3E8A", T: "#2A6034",
-  N: "#8A2850", Y: "#3A4E5E", L: "#6A306A", P: "#7A4E18",
-};
-
 interface AvisData {
-  init: string;
+  color: string;
+  Icon: LucideIcon;
   name: string;
   role: string;
   text: string;
@@ -196,7 +193,7 @@ function AvisCard({ d }: { d: AvisData }) {
       <Stars />
       <p className="avis-text">{d.text}</p>
       <div className="avis-footer">
-        <div className="avis-avatar-placeholder" style={{ background: AVATAR_COLORS[d.init] ?? "#0A0A0A" }}>{d.init}</div>
+        <div className="avis-avatar-placeholder" style={{ background: d.color }}><d.Icon size={15} color="#fff" /></div>
         <div>
           <div className="avis-name">{d.name}</div>
           <div className="avis-role">{d.role}</div>
@@ -208,24 +205,24 @@ function AvisCard({ d }: { d: AvisData }) {
 }
 
 const COL1: AvisData[] = [
-  { init: "K", name: "Karim B.", role: "Restaurateur, Paris 11e", text: "En 3 semaines on a reçu 47 nouveaux avis Google. Avant on en avait peut-être 8 sur toute l'année. Impressionnant." },
-  { init: "S", name: "Sophie L.", role: "Coach en ligne", text: "Mon site convertit vraiment maintenant. Avant les gens venaient et repartaient. Aujourd'hui on ferme des ventes directement depuis le site." },
-  { init: "M", name: "Mohamed A.", role: "Propriétaire kebab", text: "La carte de fidélité digitale a changé le jeu. Mes clients reviennent 2x plus souvent depuis qu'on l'a mise en place." },
-  { init: "A", name: "Amina T.", role: "Fondatrice startup", text: "Résultats rapides et équipe réactive. Exactement ce qu'on cherchait pour notre lancement. Je recommande les yeux fermés." },
+  { color: "#1A5C3A", Icon: Utensils,   name: "Karim B.",     role: "Restaurateur, Paris 11e",  text: "En 3 semaines on a reçu 47 nouveaux avis Google. Avant on en avait peut-être 8 sur toute l'année. Impressionnant." },
+  { color: "#B04030", Icon: Zap,        name: "Sophie L.",    role: "Coach en ligne",            text: "Mon site convertit vraiment maintenant. Avant les gens venaient et repartaient. Aujourd'hui on ferme des ventes directement depuis le site." },
+  { color: "#B06820", Icon: Flame,      name: "Mohamed A.",   role: "Propriétaire kebab",        text: "La carte de fidélité digitale a changé le jeu. Mes clients reviennent 2x plus souvent depuis qu'on l'a mise en place." },
+  { color: "#3D3A9F", Icon: Rocket,     name: "Amina T.",     role: "Fondatrice startup",        text: "Résultats rapides et équipe réactive. Exactement ce qu'on cherchait pour notre lancement. Je recommande les yeux fermés." },
 ];
 
 const COL2: AvisData[] = [
-  { init: "J", name: "Julie M.", role: "Gérante spa & bien-être", text: "On est passé de 3.8 à 4.9 étoiles sur Google en deux mois. On reçoit maintenant des clients qui citent nos avis comme raison de venir." },
-  { init: "R", name: "Rachid O.", role: "Chef & restaurateur", text: "Le menuboard digital a transformé notre salle. Les clients commandent plus facilement et on a vu nos ventes additionnelles augmenter." },
-  { init: "C", name: "Christelle V.", role: "Consultante RH", text: "Très pro, très rapide. Mon site était en ligne en moins d'une semaine et les résultats Google ont suivi dans le mois." },
-  { init: "T", name: "Thomas G.", role: "Directeur commercial", text: "L'automatisation des relances nous a économisé facilement 10h par semaine. Ça tourne tout seul, c'est magique." },
+  { color: "#1A7272", Icon: Leaf,       name: "Julie M.",     role: "Gérante spa & bien-être",  text: "On est passé de 3.8 à 4.9 étoiles sur Google en deux mois. On reçoit maintenant des clients qui citent nos avis comme raison de venir." },
+  { color: "#B04A18", Icon: ChefHat,    name: "Rachid O.",    role: "Chef & restaurateur",       text: "Le menuboard digital a transformé notre salle. Les clients commandent plus facilement et on a vu nos ventes additionnelles augmenter." },
+  { color: "#2A3E8A", Icon: Briefcase,  name: "Christelle V.",role: "Consultante RH",            text: "Très pro, très rapide. Mon site était en ligne en moins d'une semaine et les résultats Google ont suivi dans le mois." },
+  { color: "#2A6034", Icon: TrendingUp, name: "Thomas G.",    role: "Directeur commercial",      text: "L'automatisation des relances nous a économisé facilement 10h par semaine. Ça tourne tout seul, c'est magique." },
 ];
 
 const COL3: AvisData[] = [
-  { init: "N", name: "Nadia H.", role: "Responsable marketing", text: "Notre référencement local a explosé. On apparaît maintenant en premier sur toutes les recherches de notre quartier. Les appels entrants ont doublé." },
-  { init: "Y", name: "Youssef K.", role: "Gérant garage auto", text: "Je suis passé de 0 à 30 avis en 6 semaines. Mes concurrents ont mis des années pour ça. Le système est trop bien pensé." },
-  { init: "L", name: "Laura D.", role: "Directrice boutique", text: "Le site qu'ils ont fait pour moi est exactement ce que je voulais. Moderne, rapide, et il vend vraiment. ROI en moins d'un mois." },
-  { init: "P", name: "Pierre S.", role: "Gérant brasserie", text: "On a gagné 200 nouveaux clients fidèles en deux mois grâce à la carte digitale. Les gens adorent l'appli, c'est devenu un argument de vente." },
+  { color: "#8A2850", Icon: Megaphone,  name: "Nadia H.",     role: "Responsable marketing",    text: "Notre référencement local a explosé. On apparaît maintenant en premier sur toutes les recherches de notre quartier. Les appels entrants ont doublé." },
+  { color: "#3A4E5E", Icon: Wrench,     name: "Youssef K.",   role: "Gérant garage auto",        text: "Je suis passé de 0 à 30 avis en 6 semaines. Mes concurrents ont mis des années pour ça. Le système est trop bien pensé." },
+  { color: "#6A306A", Icon: ShoppingBag,name: "Laura D.",     role: "Directrice boutique",       text: "Le site qu'ils ont fait pour moi est exactement ce que je voulais. Moderne, rapide, et il vend vraiment. ROI en moins d'un mois." },
+  { color: "#7A4E18", Icon: Wine,       name: "Pierre S.",    role: "Gérant brasserie",          text: "On a gagné 200 nouveaux clients fidèles en deux mois grâce à la carte digitale. Les gens adorent l'appli, c'est devenu un argument de vente." },
 ];
 
 function TCol({ data, dur }: { data: AvisData[]; dur: string }) {
