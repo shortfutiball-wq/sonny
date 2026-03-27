@@ -27,12 +27,12 @@ const CSS = `
 }
 .nav-logo {
   font-family: var(--font-anton), Anton, Impact, sans-serif;
-  font-size: 32px;
-  letter-spacing: .03em;
+  font-size: 36px;
+  letter-spacing: -.04em;
   color: #0A0A0A;
   text-transform: uppercase;
   text-decoration: none;
-  line-height: 1;
+  line-height: .85;
 }
 .nav-cta-wrap {
   position: relative;
@@ -52,18 +52,24 @@ const CSS = `
   z-index: 1;
   font-family: var(--font-dm), 'DM Sans', sans-serif;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   color: #fff;
   background: #0A0A0A;
   border: none;
   border-radius: 10px;
-  padding: 11px 26px;
+  padding: 12px 28px;
   cursor: pointer;
-  letter-spacing: .02em;
-  transition: opacity .15s;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  transition: transform .18s ease, box-shadow .18s ease;
   display: block;
+  box-shadow: 0 4px 14px rgba(168,85,247,.45), 0 2px 6px rgba(192,38,211,.3), inset 0 1px 0 rgba(255,255,255,.08);
 }
-.nav-cta:hover { opacity: .78; }
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(168,85,247,.55), 0 4px 12px rgba(192,38,211,.4), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.nav-cta:active { transform: translateY(0); }
 .nav-spacer-top { height: 72px; }
 @media(max-width:600px) {
   .navbar { width: calc(100vw - 32px); max-width: none; }

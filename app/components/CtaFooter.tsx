@@ -302,24 +302,7 @@ export default function CtaFooter() {
 
       {/* Footer */}
       <footer className="lattic-footer">
-        <div className="footer-top">
-          <div className="footer-contact">
-            <a href="mailto:lattic.agence@gmail.com">lattic.agence@gmail.com</a>
-            <a href="tel:+33759750149">07 59 75 01 49</a>
-          </div>
-          <div className="footer-links">
-            <a href="#">Mentions légales</a>
-            <a href="#">Confidentialité</a>
-            <a href="#">Contact</a>
-          </div>
-        </div>
-
         <div className="footer-wordmark">LATTIC</div>
-
-        <div className="footer-bottom">
-          <span>© 2025 Lattic. Tous droits réservés.</span>
-          <span>Made with ♥ in Paris</span>
-        </div>
       </footer>
     </>
   );
