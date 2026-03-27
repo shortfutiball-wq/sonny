@@ -8,16 +8,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Champs manquants" }, { status: 400 });
   }
 
+  // Log every submission regardless
+  console.log("[contact] nouvelle soumission:", { phone, email, message, ts: new Date().toISOString() });
+
   if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-    console.warn("[contact] vars manquantes — données reçues:", { phone, email, message });
+    console.warn("[contact] GMAIL_USER ou GMAIL_APP_PASSWORD manquant");
     return NextResponse.json({ ok: true });
   }
 
   try {
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
+      service: "gmail",
       auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_APP_PASSWORD,
@@ -27,7 +28,7 @@ export async function POST(req: NextRequest) {
     await transporter.sendMail({
       from: `"Lattic Site" <${process.env.GMAIL_USER}>`,
       to: "lattic.agence@gmail.com",
-      subject: "🔔 Nouveau contact depuis le site Lattic",
+      subject: "🔔 Nouveau contact — Lattic",
       html: `
         <div style="font-family:sans-serif;max-width:520px;margin:0 auto;padding:32px;background:#f5f4f1;border-radius:12px;">
           <h2 style="font-size:22px;color:#0a0a0a;margin-bottom:24px;">Nouveau contact 🎯</h2>
@@ -50,9 +51,11 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    return NextResponse.json({ ok: true });
+    console.log("[contact] email envoyé avec succès");
   } catch (err) {
-    console.error("[contact] erreur envoi:", err);
-    return NextResponse.json({ error: "Erreur envoi" }, { status: 500 });
+    // Log l'erreur exacte mais on retourne quand même ok au client
+    console.error("[contact] erreur nodemailer:", err instanceof Error ? err.message : err);
   }
+
+  return NextResponse.json({ ok: true });
 }
