@@ -165,7 +165,7 @@ const ROW2 = [
   { img: "/p-resort-luxury.png", tag: "Hôtellerie", label: "New Perspectives" },
   { img: "/p-cabinet-juridique.png", tag: "Juridique", label: "Cabinet Nadine" },
   { img: "/p-bake-lounge.png", tag: "Boulangerie", label: "The Bake Lounge" },
-  { img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=560&q=80", tag: "Corporate", label: "DeltaCorp" },
+  { img: "/p-deltacorp-new.png", tag: "Restaurant", label: "Dark Lotus" },
 ];
 
 type CardData = { img?: string; tag?: string; label?: string; placeholder?: boolean };
