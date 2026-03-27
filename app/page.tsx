@@ -1,6 +1,6 @@
 "use client";
 
-import PhoneLattic from "./components/PhoneLattic";
+import Image from "next/image";
 import Portfolio from "./components/Portfolio";
 import Testimonials from "./components/Testimonials";
 import NavLattic from "./components/NavLattic";
@@ -289,8 +289,23 @@ function Hero() {
           TOUT SIMPLEMENT
         </h1>
 
-        <div style={{ marginTop: "32px" }}>
-          <PhoneLattic />
+        <div style={{
+          marginTop: "32px",
+          position: "relative",
+          width: "320px",
+          height: "650px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+          <Image
+            src="/phone-lattic.png"
+            alt="App Lattic"
+            fill
+            quality={100}
+            priority
+            style={{ objectFit: "contain", objectPosition: "center" }}
+          />
         </div>
 
         <p style={{

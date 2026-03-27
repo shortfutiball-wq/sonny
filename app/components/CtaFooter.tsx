@@ -33,13 +33,15 @@ const CSS = `
   font-family: var(--font-dm), 'DM Sans', sans-serif;
   font-size: 15px;
   color: #777;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
   line-height: 1.6;
 }
+
+/* ── Bento box ── */
 .form-bento {
-  background: rgba(255,255,255,1);
+  background: rgba(255,255,255,.72);
   border-radius: 20px;
-  padding: 28px 28px 24px;
+  padding: 32px 32px 28px;
   text-align: left;
 }
 .cta-form {
@@ -76,7 +78,7 @@ const CSS = `
 .form-field input,
 .form-field textarea {
   background: #fff;
-  border: 1px solid rgba(0,0,0,.1);
+  border: 1px solid rgba(0,0,0,.08);
   border-radius: 10px;
   padding: 13px 14px;
   font-family: var(--font-dm), 'DM Sans', sans-serif;
@@ -89,7 +91,7 @@ const CSS = `
 .form-field input::placeholder,
 .form-field textarea::placeholder { color: rgba(0,0,0,.28); }
 .form-field input:focus,
-.form-field textarea:focus { border-color: rgba(0,0,0,.4); }
+.form-field textarea:focus { border-color: rgba(0,0,0,.35); }
 .form-field textarea {
   resize: none;
   height: 100px;
@@ -100,7 +102,7 @@ const CSS = `
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 .btn-demarrer {
   width: 100%;
@@ -124,6 +126,49 @@ const CSS = `
   text-align: center;
 }
 
+/* ── Separator ── */
+.form-sep {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 4px;
+}
+.form-sep::before,
+.form-sep::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(0,0,0,.1);
+}
+.form-sep span {
+  font-family: var(--font-dm), 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: #777;
+  font-weight: 500;
+}
+
+/* ── WhatsApp button ── */
+.btn-whatsapp {
+  width: 100%;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-family: var(--font-dm), 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: .02em;
+  transition: opacity .15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+.btn-whatsapp:hover { opacity: .88; }
+
 /* ── FOOTER ── */
 .lattic-footer {
   background: var(--bg-page);
@@ -131,11 +176,18 @@ const CSS = `
   overflow: hidden;
   margin-top: 40px;
 }
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
 .footer-contact {
   display: flex;
-  flex-direction: row;
-  gap: 28px;
-  margin-bottom: 60px;
+  flex-direction: column;
+  gap: 6px;
 }
 .footer-contact a {
   font-family: var(--font-dm), 'DM Sans', sans-serif;
@@ -146,6 +198,21 @@ const CSS = `
   transition: color .15s;
 }
 .footer-contact a:hover { color: #0A0A0A; }
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+.footer-links a {
+  font-family: var(--font-dm), 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #777;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .15s;
+}
+.footer-links a:hover { color: #0A0A0A; }
 .footer-wordmark {
   font-family: var(--font-anton), Anton, Impact, sans-serif;
   font-size: clamp(180px, 28vw, 9999px);
@@ -160,12 +227,26 @@ const CSS = `
   margin-left: calc(-48px);
   margin-bottom: -0.09em;
 }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0 18px;
+  margin-top: 6px;
+}
+.footer-bottom span {
+  font-family: var(--font-dm), 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: #777;
+}
 @media(max-width:600px) {
   .form-row { grid-template-columns: 1fr; }
   .form-bento { padding: 20px 16px; }
+  .cta-section { padding: 100px 16px 80px; }
   .lattic-footer { padding: 40px 20px 0; }
   .footer-wordmark { margin-left: calc(-20px); }
-  .footer-contact { flex-direction: column; gap: 8px; }
+  .footer-top { flex-direction: column; align-items: flex-start; }
+  .footer-links { align-items: flex-start; }
 }
 `;
 
@@ -204,17 +285,41 @@ export default function CtaFooter() {
               <span className="form-note">Aucun engagement. On vous recontacte sous 24h.</span>
             </div>
           </form>
+
+          <div className="form-sep"><span>ou</span></div>
+
+          <button
+            className="btn-whatsapp"
+            onClick={() => window.open("https://wa.me/33759750149", "_blank")}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.938-1.42A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+            </svg>
+            Écrire sur WhatsApp
+          </button>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="lattic-footer">
-        <div className="footer-contact">
-          <a href="mailto:lattic.agence@gmail.com">lattic.agence@gmail.com</a>
-          <a href="tel:+33759750149">07 59 75 01 49</a>
+        <div className="footer-top">
+          <div className="footer-contact">
+            <a href="mailto:lattic.agence@gmail.com">lattic.agence@gmail.com</a>
+            <a href="tel:+33759750149">07 59 75 01 49</a>
+          </div>
+          <div className="footer-links">
+            <a href="#">Mentions légales</a>
+            <a href="#">Confidentialité</a>
+            <a href="#">Contact</a>
+          </div>
         </div>
 
         <div className="footer-wordmark">LATTIC</div>
+
+        <div className="footer-bottom">
+          <span>© 2025 Lattic. Tous droits réservés.</span>
+          <span>Made with ♥ in Paris</span>
+        </div>
       </footer>
     </>
   );
