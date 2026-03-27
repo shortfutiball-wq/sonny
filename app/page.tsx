@@ -294,13 +294,36 @@ function Hero() {
           <GlobeInteractive />
         </div>
 
-        <p data-reveal data-reveal-delay="2" style={{
+        <div data-reveal data-reveal-delay="2" style={{ display: "flex", justifyContent: "center", marginTop: "28px" }}>
+          <button
+            onClick={() => { const el = document.getElementById("contact"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}
+            style={{
+              background: "#0A0A0A",
+              color: "#fff",
+              border: "none",
+              borderRadius: "12px",
+              padding: "14px 36px",
+              fontFamily: "var(--font-dm), 'DM Sans', sans-serif",
+              fontSize: "15px",
+              fontWeight: 700,
+              cursor: "pointer",
+              letterSpacing: ".02em",
+              transition: "transform .2s cubic-bezier(.22,1,.36,1), box-shadow .2s cubic-bezier(.22,1,.36,1)",
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-3px) scale(1.015)"; (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 14px 40px rgba(0,0,0,.28)"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.transform = ""; (e.currentTarget as HTMLButtonElement).style.boxShadow = ""; }}
+          >
+            Démarrer →
+          </button>
+        </div>
+
+        <p data-reveal data-reveal-delay="3" style={{
           fontFamily: "var(--font-inter), Inter, sans-serif",
           fontSize: "14px",
           color: "var(--text-muted)",
-          marginTop: "24px",
+          marginTop: "20px",
         }}>
-          Agence experte en référencement Google.
+          Agence experte en référencement Google des TPE.
         </p>
       </div>
     </section>

@@ -25,7 +25,7 @@ const CSS = `
 }
 .cta-title {
   font-family: var(--font-anton), Anton, Impact, sans-serif;
-  font-size: clamp(58px, 9vw, 110px);
+  font-size: clamp(52px, 8vw, 96px);
   text-transform: uppercase;
   line-height: .9;
   letter-spacing: -.01em;
@@ -322,6 +322,7 @@ export default function CtaFooter() {
                     placeholder="Votre numéro de téléphone"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
+                    required={!email}
                   />
                 </div>
                 <div className="form-field">
@@ -331,6 +332,7 @@ export default function CtaFooter() {
                     placeholder="votre@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required={!phone}
                   />
                 </div>
               </div>

@@ -23,7 +23,7 @@ const CSS = `
 }
 .t-headline {
   font-family: var(--font-anton), Anton, Impact, sans-serif;
-  font-size: clamp(60px, 10vw, 120px);
+  font-size: clamp(52px, 8vw, 96px);
   text-transform: uppercase;
   line-height: .88;
   letter-spacing: -.01em;
@@ -109,6 +109,12 @@ const CSS = `
   flex-shrink: 0;
   letter-spacing: .02em;
 }
+.avis-avatar-img {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
 .avis-name {
   font-family: var(--font-dm), 'DM Sans', sans-serif;
   font-size: 13px;
@@ -190,6 +196,7 @@ interface AvisData {
   name: string;
   role: string;
   text: string;
+  photo?: string;
 }
 
 function AvisCard({ d }: { d: AvisData }) {
@@ -198,7 +205,10 @@ function AvisCard({ d }: { d: AvisData }) {
       <Stars />
       <p className="avis-text">{d.text}</p>
       <div className="avis-footer">
-        <div className="avis-avatar-placeholder" style={{ background: AVATAR_COLORS[d.init] ?? "#0A0A0A" }}>{d.initials}</div>
+        {d.photo
+          ? <img src={d.photo} alt={d.name} className="avis-avatar-img" />
+          : <div className="avis-avatar-placeholder" style={{ background: AVATAR_COLORS[d.init] ?? "#0A0A0A" }}>{d.initials}</div>
+        }
         <div>
           <div className="avis-name">{d.name}</div>
           <div className="avis-role">{d.role}</div>
@@ -210,24 +220,24 @@ function AvisCard({ d }: { d: AvisData }) {
 }
 
 const COL1: AvisData[] = [
-  { init: "K", initials: "KB", name: "Karim B.", role: "Restaurateur, Paris 11e", text: "En 3 semaines on a reçu 47 nouveaux avis Google. Avant on en avait peut-être 8 sur toute l'année. Impressionnant." },
-  { init: "S", initials: "SL", name: "Sophie L.", role: "Coach en ligne", text: "Mon site convertit vraiment maintenant. Avant les gens venaient et repartaient. Aujourd'hui on ferme des ventes directement depuis le site." },
-  { init: "M", initials: "MA", name: "Mohamed A.", role: "Propriétaire kebab", text: "La carte de fidélité digitale a changé le jeu. Mes clients reviennent 2x plus souvent depuis qu'on l'a mise en place." },
-  { init: "A", initials: "AT", name: "Amina T.", role: "Fondatrice startup", text: "Résultats rapides et équipe réactive. Exactement ce qu'on cherchait pour notre lancement. Je recommande les yeux fermés." },
+  { init: "K", initials: "KB", name: "Karim B.", role: "Restaurateur, Paris 11e", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=72&h=72&fit=crop&crop=face&q=80", text: "En 3 semaines on a reçu 47 nouveaux avis Google. Avant on en avait peut-être 8 sur toute l'année. Impressionnant." },
+  { init: "S", initials: "SL", name: "Sophie L.", role: "Coach en ligne", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=72&h=72&fit=crop&crop=face&q=80", text: "Mon site convertit vraiment maintenant. Avant les gens venaient et repartaient. Aujourd'hui on ferme des ventes directement depuis le site." },
+  { init: "M", initials: "MA", name: "Mohamed A.", role: "Propriétaire kebab", photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=72&h=72&fit=crop&crop=face&q=80", text: "La carte de fidélité digitale a changé le jeu. Mes clients reviennent 2x plus souvent depuis qu'on l'a mise en place." },
+  { init: "A", initials: "AT", name: "Amina T.", role: "Fondatrice startup", photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=72&h=72&fit=crop&crop=face&q=80", text: "Résultats rapides et équipe réactive. Exactement ce qu'on cherchait pour notre lancement. Je recommande les yeux fermés." },
 ];
 
 const COL2: AvisData[] = [
-  { init: "J", initials: "JM", name: "Julie M.", role: "Gérante spa & bien-être", text: "On est passé de 3.8 à 4.9 étoiles sur Google en deux mois. On reçoit maintenant des clients qui citent nos avis comme raison de venir." },
-  { init: "R", initials: "RO", name: "Rachid O.", role: "Chef & restaurateur", text: "Le menuboard digital a transformé notre salle. Les clients commandent plus facilement et on a vu nos ventes additionnelles augmenter." },
-  { init: "C", initials: "CV", name: "Christelle V.", role: "Consultante RH", text: "Très pro, très rapide. Mon site était en ligne en moins d'une semaine et les résultats Google ont suivi dans le mois." },
-  { init: "T", initials: "TG", name: "Thomas G.", role: "Directeur commercial", text: "L'automatisation des relances nous a économisé facilement 10h par semaine. Ça tourne tout seul, c'est magique." },
+  { init: "J", initials: "JM", name: "Julie M.", role: "Gérante spa & bien-être", photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=72&h=72&fit=crop&crop=face&q=80", text: "On est passé de 3.8 à 4.9 étoiles sur Google en deux mois. On reçoit maintenant des clients qui citent nos avis comme raison de venir." },
+  { init: "R", initials: "RO", name: "Rachid O.", role: "Chef & restaurateur", photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=72&h=72&fit=crop&crop=face&q=80", text: "Le menuboard digital a transformé notre salle. Les clients commandent plus facilement et on a vu nos ventes additionnelles augmenter." },
+  { init: "C", initials: "CV", name: "Christelle V.", role: "Consultante RH", photo: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=72&h=72&fit=crop&crop=face&q=80", text: "Très pro, très rapide. Mon site était en ligne en moins d'une semaine et les résultats Google ont suivi dans le mois." },
+  { init: "T", initials: "TG", name: "Thomas G.", role: "Directeur commercial", photo: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=72&h=72&fit=crop&crop=face&q=80", text: "L'automatisation des relances nous a économisé facilement 10h par semaine. Ça tourne tout seul, c'est magique." },
 ];
 
 const COL3: AvisData[] = [
-  { init: "N", initials: "NH", name: "Nadia H.", role: "Responsable marketing", text: "Notre référencement local a explosé. On apparaît maintenant en premier sur toutes les recherches de notre quartier. Les appels entrants ont doublé." },
-  { init: "Y", initials: "YK", name: "Youssef K.", role: "Gérant garage auto", text: "Je suis passé de 0 à 30 avis en 6 semaines. Mes concurrents ont mis des années pour ça. Le système est trop bien pensé." },
-  { init: "L", initials: "LD", name: "Laura D.", role: "Directrice boutique", text: "Le site qu'ils ont fait pour moi est exactement ce que je voulais. Moderne, rapide, et il vend vraiment. ROI en moins d'un mois." },
-  { init: "P", initials: "PS", name: "Pierre S.", role: "Gérant brasserie", text: "On a gagné 200 nouveaux clients fidèles en deux mois grâce à la carte digitale. Les gens adorent l'appli, c'est devenu un argument de vente." },
+  { init: "N", initials: "NH", name: "Nadia H.", role: "Responsable marketing", photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=72&h=72&fit=crop&crop=face&q=80", text: "Notre référencement local a explosé. On apparaît maintenant en premier sur toutes les recherches de notre quartier. Les appels entrants ont doublé." },
+  { init: "Y", initials: "YK", name: "Youssef K.", role: "Gérant garage auto", photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=72&h=72&fit=crop&crop=face&q=80", text: "Je suis passé de 0 à 30 avis en 6 semaines. Mes concurrents ont mis des années pour ça. Le système est trop bien pensé." },
+  { init: "L", initials: "LD", name: "Laura D.", role: "Directrice boutique", photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=72&h=72&fit=crop&crop=face&q=80", text: "Le site qu'ils ont fait pour moi est exactement ce que je voulais. Moderne, rapide, et il vend vraiment. ROI en moins d'un mois." },
+  { init: "P", initials: "PS", name: "Pierre S.", role: "Gérant brasserie", photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=72&h=72&fit=crop&crop=face&q=80", text: "On a gagné 200 nouveaux clients fidèles en deux mois grâce à la carte digitale. Les gens adorent l'appli, c'est devenu un argument de vente." },
 ];
 
 function TCol({ data, dur }: { data: AvisData[]; dur: string }) {

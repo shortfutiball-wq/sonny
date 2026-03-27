@@ -151,6 +151,11 @@ body {
   .svc-bg-text { font-size: 80px !important; }
 }
 
+/* ── Section separators ── */
+.portfolio-section  { margin-top: clamp(40px, 8vw, 100px); }
+.testimonials-section { margin-top: clamp(40px, 8vw, 100px); }
+.cta-section        { margin-top: clamp(20px, 4vw, 60px); }
+
 /* ── Testimonials will-change ── */
 .t-col-inner { will-change: transform; }
 
