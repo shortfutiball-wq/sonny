@@ -287,7 +287,7 @@ function Hero() {
         }}>
           PLUS DE CLIENTS,
           <br />
-          TOUT SIMPLEMENT
+          TOUT SIMPLEMENT.
         </h1>
 
         <div data-reveal data-reveal-delay="1" style={{ marginTop: "clamp(24px, 4vw, 40px)", marginBottom: "8px", maxWidth: "min(560px, 90vw)", margin: "clamp(24px, 4vw, 40px) auto 8px" }}>
