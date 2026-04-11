@@ -277,14 +277,11 @@ export default function PhoneLattic() {
             </div>
 
             <div className="uc-content">
-              {/* Dark banner — Google */}
+              {/* Dark banner — Search ranking */}
               <div className="uc-banner">
-                <svg width="18" height="18" viewBox="0 0 18 18">
-                  <circle cx="9" cy="9" r="9" fill="white"/>
-                  <path d="M13.8 9.2c0-.4 0-.7-.1-1H9v1.9h2.7c-.1.6-.5 1.1-1 1.4v1.2h1.6c.9-.9 1.5-2.2 1.5-3.5z" fill="#4285F4"/>
-                  <path d="M9 14c1.4 0 2.5-.5 3.3-1.3l-1.6-1.2c-.5.3-1 .5-1.7.5-1.3 0-2.4-.9-2.8-2.1H4.5v1.2C5.3 13.1 7 14 9 14z" fill="#34A853"/>
-                  <path d="M6.2 9.9c-.1-.3-.2-.6-.2-1s.1-.7.2-1V6.7H4.5C4.2 7.4 4 8.2 4 9s.2 1.6.5 2.3l1.7-1.4z" fill="#FBBC05"/>
-                  <path d="M9 5.9c.7 0 1.4.3 1.9.7L12.2 5C11.4 4.3 10.2 4 9 4 7 4 5.3 4.9 4.5 6.7l1.7 1.2C6.6 6.8 7.7 5.9 9 5.9z" fill="#EA4335"/>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="7.5" cy="7.5" r="5" stroke="white" strokeWidth="1.5"/>
+                  <line x1="11.5" y1="11.5" x2="15" y2="15" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
                 <span className="uc-banner-text">Votre site est n°1</span>
               </div>
